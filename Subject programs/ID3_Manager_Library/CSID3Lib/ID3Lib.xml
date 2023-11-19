@@ -1,0 +1,1094 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Id3Lib</name>
+    </assembly>
+    <members>
+        <member name="T:Id3Lib.FrameManager">
+            <summary>
+            Handle the loading and saving of ID3 tags.
+            </summary>
+            <remarks>
+            The <c>FrameManager</c> class manages the converion of a ID3v2 tag from binary form 
+            to a <see cref="T:Id3Lib.FrameManager"/> that can be manipulated and saved later again to
+            a binary form.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.FrameManager.Deserialize(System.IO.Stream)">
+            <summary>
+            Load the ID3v2 frames to a binary stream
+            </summary>
+            <param name="src">Bynary stream holding the ID3 Tag</param>
+            <returns>Model keeping the ID3 Tag structure</returns>
+        </member>
+        <member name="M:Id3Lib.FrameManager.Serialize(Id3Lib.FrameModel,System.IO.Stream)">
+            <summary>
+            Save the ID3v2 frames to a binary stream
+            </summary>
+            <param name="tagModel">Model keeping the ID3 Tag structure</param>
+            <param name="stream">Stream keeping the ID3 Tag</param>
+        </member>
+        <member name="T:Id3Lib.Header">
+            <summary>
+            Manages the ID3v2 tag header.
+            </summary>
+            <remarks>
+             The <b>Header</b> class manages the first part of the ID3v2 tag that is the first ten bytes
+             of the ID3v1 tag.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.Header.Serialize(System.IO.Stream)">
+            <summary>
+            Save header into the stream.
+            </summary>
+            <param name="stream">Stream to save header</param>
+        </member>
+        <member name="M:Id3Lib.Header.Deserialize(System.IO.Stream)">
+            <summary>
+            Load header from the stream.
+            </summary>
+            <param name="stream">Stream to load header</param>
+        </member>
+        <member name="P:Id3Lib.Header.HeaderSize">
+            <summary>
+            Get the size of the header only.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.Version">
+            <summary>
+            Get or set ID3v2 major version number.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.Revision">
+            <summary>
+            Get or set the ID3v2 revision number.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.TagSize">
+            <summary>
+            Get or set the complete ID3v2 tag size.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.Unsync">
+            <summary>
+            Get or set if unsynchronisation is applied on all frames.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.ExtendedHeader">
+            <summary>
+            Get or set if the header is followed by an extended header.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Header.Experimental">
+            <summary>
+            Get or set if the tag is experimental stage.
+            </summary>
+            <remarks>
+            This flag shall always be set when the tag is in an experimental stage.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.Header.Footer">
+            <summary>
+            Get or set if a footer is present at the end of the tag.
+            </summary>
+            <remarks>
+            Can't be uesd simultaneously with the frame padding they are mutualy exlusive.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.Header.Padding">
+            <summary>
+            Get or set if padding is applied on the tag.
+            </summary>
+            <remarks>
+            Can't be uesd simultanipusly with the frame footer they are mutualy exlusive.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.Header.PaddingSize">
+            <summary>
+            Get or set if padding size.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.StreamTextBuilder">
+            <summary>
+            Manages binary to text and viceversa format conversions.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.MP3File">
+            <summary>
+            Manage MP3 file ID3v2 tags.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.MP3File.Read(System.String)">
+            <summary>
+            Read the ID3v2 tag model.
+            </summary>
+            <param name="file">File location</param>
+        </member>
+        <member name="M:Id3Lib.MP3File.Write(System.String,Id3Lib.FrameModel)">
+            <summary>
+            Write the tag model to the file.
+            </summary>
+            <param name="file">File location were tag will be saved</param>
+            <param name="tagModel">Tag model beeing saved</param>
+        </member>
+        <member name="T:Id3Lib.TagHandler">
+            <summary>
+            Reduce the compexity the tag model to a simple interface
+            </summary>
+        </member>
+        <member name="M:Id3Lib.TagHandler.SetTextFrame(System.String,System.String)">
+            <summary>
+            Set the frame text
+            </summary>
+            <param name="tag">Frame type</param>
+            <param name="message">Value set in frame</param>
+        </member>
+        <member name="M:Id3Lib.TagHandler.GetTextFrame(System.String)">
+            <summary>
+            Get the frame text
+            </summary>
+            <param name="tag">Frame type</param>
+            <returns>Frame text</returns>
+        </member>
+        <member name="M:Id3Lib.TagHandler.FindFrame(System.String)">
+            <summary>
+            Find a frame in the model
+            </summary>
+            <param name="tag">Frame type</param>
+            <returns>The found frame if found, otherwise null</returns>
+        </member>
+        <member name="M:Id3Lib.TagHandler.#ctor(Id3Lib.FrameModel)">
+            <summary>
+            Attach to the TagModel
+            </summary>
+            <param name="tagModel">Tag model to handle</param>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Song">
+            <summary>
+            Get the title/songname/content description.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Artist">
+            <summary>
+            Get the lead performer/soloist.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Year">
+            <summary>
+            Get the production year.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Album">
+            <summary>
+            Get the album title.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Comment">
+            <summary>
+            Get the track/artist comment.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Track">
+            <summary>
+            Get the track number.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.TagHandler.Genere">
+            <summary>
+            Get the track genere.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.Memory">
+            <summary>
+            Provides static methods to compare, find, copy and clear a byte array.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.Memory.Compare(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Compare two byte arrays and determine if they are equal
+            </summary>
+            <param name="b1">First byte array</param>
+            <param name="b2">Second byte array</param>
+            <param name="count">Number of bytes to compare</param>
+            <returns>Returns true if the arrays are equal</returns>
+        </member>
+        <member name="M:Id3Lib.Memory.Compare(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Compare two byte arrays and determine if they are equal
+            </summary>
+            <param name="b1">First byte array</param>
+            <param name="b1Index">Offset of the first byte array</param>
+            <param name="b2">Second byte array</param>
+            <param name="b2Index">Offset of the second byte array</param>
+            <param name="count">Number of bytes to compare</param>
+            <returns>Returns true if the arrays are equal</returns>
+        </member>
+        <member name="M:Id3Lib.Memory.Copy(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Copy form the source array to the destination array
+            </summary>
+            <param name="src">Source array</param>
+            <param name="dst">Destination array</param>
+            <param name="count">Number of bytes to copy</param>
+        </member>
+        <member name="M:Id3Lib.Memory.Copy(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Copy form the source array to the destination array
+            </summary>
+            <param name="src">Source array</param>
+            <param name="srcIndex">Offset of the source array</param>
+            <param name="dst">Destination array</param>
+            <param name="dstIndex">Offset of the destination array</param>
+            <param name="count">Number of bytes to copy</param>
+        </member>
+        <member name="M:Id3Lib.Memory.FindByte(System.Byte[],System.Byte,System.Int32)">
+            <summary>
+            Find a byte in the array
+            </summary>
+            <param name="src">Source array</param>
+            <param name="val">Byte value to find</param>
+            <param name="index">Offset of the source array</param>
+            <returns></returns>
+        </member>
+        <member name="M:Id3Lib.Memory.FindShort(System.Byte[],System.Int16,System.Int32)">
+            <summary>
+            Find a short in the array
+            </summary>
+            <param name="src">Source array</param>
+            <param name="val">Short value to find</param>
+            <param name="index">Offset of the source array</param>
+            <returns></returns>
+        </member>
+        <member name="M:Id3Lib.Memory.Clear(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Clear an array
+            </summary>
+            <param name="src">Source array</param>
+            <param name="begin">Start position</param>
+            <param name="end">End position</param>
+        </member>
+        <member name="T:Id3Lib.TagNotFoundException">
+            <summary>
+            The exception is thrown when the tag is missing.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.Sync">
+            <summary>
+            Provides static methods for making ID3v2 unsynchronisation
+            </summary>
+            <remarks>
+            This helper class takes care of the synchronisation and unsynchronisation needs.
+            The purpose of unsynchronisation is to make the ID3v2 tag as compatible as possible
+            with existing software and hardware.
+            
+            Synchsafe integers are integers that keep its highest byte bit (bit 7) zeroed, making seven bits
+            out of every eight available.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.Sync.Unsafe(System.Int32)">
+            <summary>
+            Converts from a syncsafe integer to a normal integer
+            </summary>
+            <param name="val">Litle-endian Sincsafe value</param>
+            <returns>Litle-endian normal value</returns>
+        </member>
+        <member name="M:Id3Lib.Sync.Safe(System.Int32)">
+            <summary>
+            Converts from a normal intger to a syncsafe integer
+            </summary>
+            <param name="val">Bigendian normal value</param>
+            <returns>Bigendian syncsafe value</returns>
+        </member>
+        <member name="M:Id3Lib.Sync.UnsafeBigEndian(System.Int32)">
+            <summary>
+            Converts from a syncsafe integer to a normal integer
+            </summary>
+            <param name="val">Big-endian Sincsafe value</param>
+            <returns>Big-endian normal value</returns>
+        </member>
+        <member name="M:Id3Lib.Sync.SafeBigEndian(System.Int32)">
+            <summary>
+            Converts from a syncsafe integer to a normal integer
+            </summary>
+            <param name="val">Big-endian normal value</param>
+            <returns>Big-endian syncsafe value</returns>
+        </member>
+        <member name="M:Id3Lib.Sync.Unsafe(System.IO.Stream,System.IO.Stream,System.Int32)">
+            <summary>
+            Convert a syncsafe stream to a normal stream
+            </summary>
+            <param name="src">Source stream</param>
+            <param name="dst">Destination stream</param>
+            <param name="size">Bytes to be proccesed</param>
+            <returns>Number of bytes removed form the original stream</returns>
+        </member>
+        <member name="M:Id3Lib.Sync.Safe(System.IO.Stream,System.IO.Stream,System.Int32)">
+            <summary>
+            Convert from an unsafe or normal stream to a syncsafe stream 
+            </summary>
+            <param name="src">Source stream</param>
+            <param name="dst">Destination stream</param>
+            <param name="count">Bytes to be proccesed</param>
+            <returns>Number of bytes added to the original stream</returns>
+        </member>
+        <member name="T:Id3Lib.ID3v1">
+            <summary>
+            Manage ID3v1 tags
+            </summary>
+            <remarks>
+            The <b>ID3v1</b> class can read an ID3v1 tag form a mp3 file returning the <see cref="P:Id3Lib.ID3v1.TagModel"/> and
+            write an ID3v1 form the TagModel to a mp3 file, it will ignore any fields not supported in ID3v1 tag format.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.ID3v1.#ctor">
+            <summary>
+            ID3v1 tag manager
+            </summary>
+        </member>
+        <member name="M:Id3Lib.ID3v1.Deserialize(System.IO.Stream)">
+            <summary>
+            Load tag from sream
+            </summary>
+            <param name="src">Binary stream to load</param>
+        </member>
+        <member name="M:Id3Lib.ID3v1.Serialize(System.IO.Stream)">
+            <summary>
+            Save tag from sream
+            </summary>
+            <param name="src">Binary stream to save</param>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Song">
+            <summary>
+            Get the title/songname/content description.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Artist">
+            <summary>
+            Get the lead performer/soloist.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Year">
+            <summary>
+            Get the production year.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Album">
+            <summary>
+            Get the album title.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Comment">
+            <summary>
+            Get the track/artist comment.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Track">
+            <summary>
+            Get the track number.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.Genere">
+            <summary>
+            Get the track genere.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ID3v1.TagModel">
+            <summary>
+            Get or set the ID3v2 TagModel.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FramePicture">
+            <summary>
+            Picture Frame
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameBase">
+            <summary>
+            Summary description for BaseFrame.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FrameBase.SetDescription(System.String)">
+            <summary>
+            ID3 frame tag description
+            </summary>
+            <param name="description">The tag frame description</param>
+        </member>
+        <member name="M:Id3Lib.FrameBase.Parse(System.Byte[])">
+            <summary>
+            Load frame form binary data
+            </summary>
+            <param name="frame">binary tag frame representation</param>
+        </member>
+        <member name="M:Id3Lib.FrameBase.Make">
+            <summary>
+            Save frame to binary data
+            </summary>
+            <returns>binary tag frame representation</returns>
+        </member>
+        <member name="P:Id3Lib.FrameBase.Flags">
+            <summary>
+            Tag frame flags
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameBase.TagDescription">
+            <summary>
+            Description of the ID3 tag frame
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameBase.Tag">
+            <summary>
+            ID3 Tag frame type
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FramePicture.#ctor">
+            <summary>
+            Picture Frame
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FramePicture.#ctor(System.String)">
+            <summary>
+            Picture Frame
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FramePicture.Parse(System.Byte[])">
+            <summary>
+            Load from binary data a picture frame
+            </summary>
+            <param name="frame">picture binary representation</param>
+        </member>
+        <member name="M:Id3Lib.FramePicture.Make">
+            <summary>
+             Save picture frame to binary data
+            </summary>
+            <returns>picture binary representation</returns>
+        </member>
+        <member name="M:Id3Lib.FramePicture.ToString">
+            <summary>
+            Get a desciprion of the picrure frame
+            </summary>
+            <returns>Pictrure description</returns>
+        </member>
+        <member name="P:Id3Lib.FramePicture.TextEncoding">
+            <summary>
+            Type of text encoding
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FramePicture.Mime">
+            <summary>
+            Picture MIME type
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FramePicture.PictureType">
+            <summary>
+            Desctiption of the picture
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FramePicture.PictureDescription">
+            <summary>
+            Desctiption of the picture
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FramePicture.PictureData">
+            <summary>
+            Binary data representing the picture
+            </summary>
+        </member>
+        <member name="T:Id3Lib.Id3FrameTagAttribute">
+            <summary>
+            Declare the type of tags a frame will manage
+            </summary>
+        </member>
+        <member name="M:Id3Lib.Id3FrameTagAttribute.#ctor(System.String)">
+            <summary>
+            Default Constuctor
+            </summary>
+            <param name="tag">The tag pattern to match</param>
+        </member>
+        <member name="P:Id3Lib.Id3FrameTagAttribute.Tag">
+            <summary>
+            Get the tag pattern to match
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FlagHandler">
+            <summary>
+            Helper that handles header flags.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FlagHandler.#ctor(Id3Lib.Header)">
+            <summary>
+            Create a FlagHandler.
+            </summary>
+            <param name="tagHeader">ID3 Header</param>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Version">
+            <summary>
+            Get the ID3v2 Version
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Revision">
+            <summary>
+            Get the ID3v2 Revision
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Flags">
+            <summary>
+            Get or set the ID3v2 Frame flags
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.TagAlter">
+            <summary>
+            Get or set the tag ater flag</summary>
+            <remarks>
+            This flag tells the tag parser what to do with this frame if it is
+            unknown and the tag is altered in any way.																												the frames.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.FileAlter">
+            <summary>
+            Get or set the file alter flag
+            </summary>
+            <remarks>
+            This flag tells the tag parser what to do with this frame if it is
+            unknown and the file, excluding the tag, is altered.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.ReadOnly">
+            <summary>
+            Get or set the read only flag
+            </summary>
+            <remarks>
+            This flag, if set, tells the software that the contents of this
+            frame are intended to be read only.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Grouping">
+            <summary>
+            Get or set the grouping flag
+            </summary> 
+            <remarks>
+            This flag indicates whether or not this frame belongs in a group with other frames.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Compression">
+            <summary>
+            Get or set the compression flag.
+            </summary>
+            <remarks>
+            This flag indicates whether or not the frame is compressed.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Encryption">
+            <summary>
+            Get or set the encryption flag.
+            </summary>
+            <remarks>
+            This flag indicates whether or not the frame is encrypted.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.Unsynchronisation">
+            <summary>
+            Get or set the unsynchronisation flag.
+            </summary>
+            <remarks>
+            This flag indicates whether or not unsynchronisation was applied to this frame.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FlagHandler.DataLength">
+            <summary>
+            Get or set the data length.
+            </summary>
+            <remarks>
+            This flag indicates that a data length indicator has been added to the frame.
+            </remarks>
+        </member>
+        <member name="T:Id3Lib.FrameText">
+            <summary>
+            Manages Text frames
+            </summary>
+            <remarks>
+            The <b>FrameText</b> class handles the frames of text information these 
+            are often the most important frames, containing information like artist,
+            album and more. There may only be one text information frame of its kind in an tag.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.FrameText.#ctor(System.String)">
+            <summary>
+            Create a FrameText frame.
+            </summary>
+            <param name="tag">ID3v2 type of text frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameText.Parse(System.Byte[])">
+            <summary>
+            Parse the text binary frame.
+            </summary>
+            <param name="frame">binary frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameText.Make">
+            <summary>
+            Create a text binary frame.
+            </summary>
+            <returns>binary frame</returns>
+        </member>
+        <member name="M:Id3Lib.FrameText.ToString">
+            <summary>
+            Default Frame description.
+            </summary>
+            <returns>Text of the frame</returns>
+        </member>
+        <member name="P:Id3Lib.FrameText.TextCode">
+            <summary>
+            Get or set the type of text encoding, the frame is using.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameText.Text">
+            <summary>
+            Get or Set the text of the frame
+            </summary>
+        </member>
+        <member name="T:Id3Lib.Frames">
+            <summary>
+            Store the Frames of a ID3v2 frame.
+            </summary>
+            <remarks>
+            The <c>Frames</c> class stores the ID3v2 Frames, no enforcement is made to follow
+            ID3v2 rules, that is you can add multiple times any tag in invalid ways, it is your
+            responability to follow ID3vs rules. Later some enforcement can be added as we have
+            custom collection and validations can be added on collection insertion/removal points.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.Frames.Add(Id3Lib.FrameBase)">
+            <summary>
+            Adds a frame to the end of the array.
+            </summary>
+            <param name="frame">Frame to add</param>
+        </member>
+        <member name="M:Id3Lib.Frames.Insert(System.Int32,Id3Lib.FrameBase)">
+            <summary>
+            Inserts a frame at the specified index.
+            </summary>
+            <param name="index">Index position</param>
+            <param name="frame">Frame to insert</param>
+        </member>
+        <member name="M:Id3Lib.Frames.Remove(Id3Lib.FrameBase)">
+            <summary>
+            Removes the first frame occurrence.
+            </summary>
+            <param name="frame">Frame to remove</param>
+        </member>
+        <member name="M:Id3Lib.Frames.Contains(Id3Lib.FrameBase)">
+            <summary>
+            Determines whether this frame exists.
+            </summary>
+            <param name="frame">Frame to check if pressent</param>
+            <returns>True if the frame is present</returns>
+        </member>
+        <member name="M:Id3Lib.Frames.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the entire Frames to a compatible one-dimensional Array,
+            starting at the specified index of the target array.
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:Id3Lib.Frames.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through a collection.
+            </summary>
+            <returns>An IEnumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="P:Id3Lib.Frames.Item(System.Int32)">
+            <summary>
+            Gets the index element in the Frames collection.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Frames.Count">
+            <summary>
+            Gets the number of elements actually contained in the Frames.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Frames.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the Frames is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:Id3Lib.Frames.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the Frames.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.Mp3Frame">
+            <summary>
+            Incomplete experimental test to read mp3 Frames.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.Mp3Frame.Seek(System.IO.Stream)">
+            <summary>
+            Find the first occurrance of an mp3 header.
+            </summary>
+            <param name="stream">The stream to perform the search.</param>
+            <returns>First mp3 header position in the stream.</returns>
+        </member>
+        <member name="M:Id3Lib.Mp3Frame.ReadFrame(System.Byte[])">
+            <summary>
+            Parse mp3 frame
+            </summary>
+            <param name="frame">Binary MP3 frame</param>
+        </member>
+        <member name="T:Id3Lib.TextCode">
+            <summary>
+            Type of text used in frame
+            </summary>
+        </member>
+        <member name="F:Id3Lib.TextCode.ASCII">
+            <summary>
+            ASCII(ISO-8859-1)
+            </summary>
+        </member>
+        <member name="F:Id3Lib.TextCode.UTF16">
+            <summary>
+            Unicode with BOM
+            </summary>
+        </member>
+        <member name="F:Id3Lib.TextCode.UTF16BE">
+            <summary>
+            BigEndian Unicode without BOM
+            </summary>
+        </member>
+        <member name="F:Id3Lib.TextCode.UTF8">
+            <summary>
+            Encoded Unicode
+            </summary>
+        </member>
+        <member name="T:Id3Lib.TextBuilder">
+            <summary>
+            Manages binary to text and viceversa format conversions.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameFullText">
+            <summary>
+            Manages unsynchronised lyrics and comment frames.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FrameFullText.#ctor(System.String)">
+            <summary>
+            Create a FrameLCText frame.
+            </summary>
+            <param name="tag">ID3v2 type of text frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameFullText.Parse(System.Byte[])">
+            <summary>
+            Parse binary data unsynchronised lyrics/comment frame.
+            </summary>
+            <param name="frame">binary frame data</param>
+        </member>
+        <member name="M:Id3Lib.FrameFullText.Make">
+            <summary>
+            Create binary data from unsynchronised lyrics/comment frame 
+            </summary>
+            <returns>binary frame data</returns>
+        </member>
+        <member name="M:Id3Lib.FrameFullText.ToString">
+            <summary>
+            Default frame description.
+            </summary>
+            <returns>unsynchronised lyrics/comment text</returns>
+        </member>
+        <member name="P:Id3Lib.FrameFullText.TextCode">
+            <summary>
+            Get or set the type of text encoding the frame is using.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameFullText.Description">
+            <summary>
+            Get or set the description of the frame contents.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameFullText.Text">
+            <summary>
+            Get or set the main text data.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameFullText.Language">
+            <summary>
+            Get or set the Language the main text uses.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameFactory">
+             <summary>
+             Builder factory that creates frames
+             </summary>
+            <remarks>
+             The FrameFactory class creates the correct frame based on the four bytes each frame uses
+             to describe its type, also a description of the frame is added.
+            </remarks>
+        </member>
+        <member name="F:Id3Lib.FrameFactory._instance">
+            <summary>
+            Singleton frame factory
+            </summary>
+        </member>
+        <member name="F:Id3Lib.FrameFactory._descriptions">
+            <summary>
+            Keep a relation between frame Frames and descriptions of them
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FrameFactory.#ctor">
+            <summary>
+            Create a FrameFactory.
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FrameFactory.Description(System.String)">
+            <summary>
+            Obtain a human description of a tag
+            </summary>
+            <param name="tag">the four character frame name</param>
+            <returns>description of the tag</returns>
+        </member>
+        <member name="M:Id3Lib.FrameFactory.Build(System.String)">
+            <summary>
+            Builds a frame base, based on the frame tag type.
+            </summary>
+            <param name="tag">The ID3v2 tag type</param>
+            <returns>Frame required for the frame type</returns>
+        </member>
+        <member name="M:Id3Lib.FrameFactory.Intitalize">
+            <summary>
+            Fill the hash with the frame descriptors
+            </summary>
+        </member>
+        <member name="T:Id3Lib.InvalidFrameException">
+            <summary>
+            The exception is thrown when a frame is corrupt.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameUnknown">
+            <summary>
+            Container for unknown frames.
+            </summary>
+            <remarks>
+            The <b>FrameUnknown</b> class handles unknown frames so they can be restored
+            or discarded later.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.FrameUnknown.#ctor(System.String)">
+            <summary>
+            Create an unknown frame object.
+            </summary>
+            <param name="tag">ID3v2 type of unnown frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameUnknown.Parse(System.Byte[])">
+            <summary>
+            Set the binary frame
+            </summary>
+            <param name="frame">binary frame unknown</param>
+        </member>
+        <member name="M:Id3Lib.FrameUnknown.Make">
+            <summary>
+            Get a binary frame
+            </summary>
+            <returns>binary frame unknown</returns>
+        </member>
+        <member name="M:Id3Lib.FrameUnknown.ToString">
+            <summary>
+            Default Frame description
+            </summary>
+            <returns>Unknown ID3 tag</returns>
+        </member>
+        <member name="T:Id3Lib.Swap">
+            <summary>
+            Performs byte swaping.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.InvalidTagException">
+            <summary>
+            The exception is thrown when the tag is corrupt.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameBinary">
+            <summary>
+            Manage general encapsulated objects.
+            </summary>
+            <remarks>
+            The <b>FrameBinary</b> class handles GEOB ID3v2 frame types that can hold any type of file
+            or binary data encapsulated.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.FrameBinary.#ctor(System.String)">
+            <summary>
+            Create a FrameGEOB frame.
+            </summary>
+            <param name="tag">ID3v2 GEOB frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameBinary.Parse(System.Byte[])">
+            <summary>
+            Parse the binary GEOB frame
+            </summary>
+            <param name="frame">binary frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameBinary.Make">
+            <summary>
+            Create a binary GEOB frame
+            </summary>
+            <returns>binary frame</returns>
+        </member>
+        <member name="M:Id3Lib.FrameBinary.ToString">
+            <summary>
+            GEOB frame description 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Id3Lib.FrameBinary.TextEncoding">
+            <summary>
+            Type of text encoding
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameBinary.Mime">
+            <summary>
+            Text MIME type
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameBinary.ObjectDescription">
+            <summary>
+            Frame description
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameBinary.ObjectData">
+            <summary>
+            Binary representation of the object
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameModel">
+            <summary>
+            Manages an ID3v2 tag as an object reprsentation. 
+            </summary>
+            <remarks>
+            The <b>FrameModel</b> class represents a ID3v2 tag, it contains a <see cref="P:Id3Lib.FrameModel.Header"/> that
+            handles the tag header, an <see cref="P:Id3Lib.FrameModel.ExtendedHeader"/> that it is optional and 
+            stores the frames.
+            </remarks>
+        </member>
+        <member name="P:Id3Lib.FrameModel.Header">
+            <summary>
+            Get or set the header.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameModel.ExtendedHeader">
+            <summary>
+            Get or set extended header.
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameModel.Frames">
+            <summary>
+            Get or set the frames.
+            </summary>
+        </member>
+        <member name="T:Id3Lib.FrameHelper">
+            <summary>
+            Manage the Parsing or Creation of binary frames.
+            </summary>
+            <remarks>
+            The <b>FrameHelper</b> is a helper class that recives binary frame form a ID3v1 tag
+            and returns the correct parsed frame or form a frame creates a binary frame that can be
+            saved on an ID3v2 tag in a mp3 file.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.FrameHelper.#ctor(Id3Lib.Header)">
+            <summary>
+            Create Frames depending on type
+            </summary>
+            <param name="tagHeader">ID3 Header</param>
+        </member>
+        <member name="M:Id3Lib.FrameHelper.Build(System.String,System.UInt16,System.Byte[])">
+            <summary>
+            Create a frame depending on the tag form its binary representation.
+            </summary>
+            <param name="tag">type of frame</param>
+            <param name="flags">frame flags</param>
+            <param name="frame">binary frame</param>
+            <returns>Frame of tag type</returns>
+        </member>
+        <member name="M:Id3Lib.FrameHelper.Make(Id3Lib.FrameBase)">
+            <summary>
+            Build a binary data frame form the frame object.
+            </summary>
+            <param name="frameBase">ID3 Frame</param>
+            <returns>binary frame representation</returns>
+        </member>
+        <member name="T:Id3Lib.FrameUrl">
+            <summary>
+            Manages URL Frames
+            </summary>
+        </member>
+        <member name="M:Id3Lib.FrameUrl.#ctor(System.String)">
+            <summary>
+            Create a URL frame
+            </summary>
+            <param name="tag">Type of URL frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameUrl.Parse(System.Byte[])">
+            <summary>
+            Parse the binary frame
+            </summary>
+            <param name="frame">binary frame</param>
+        </member>
+        <member name="M:Id3Lib.FrameUrl.Make">
+            <summary>
+            Create a binary frame
+            </summary>
+            <returns>binary frame</returns>
+        </member>
+        <member name="M:Id3Lib.FrameUrl.ToString">
+            <summary>
+            Default frame description
+            </summary>
+            <returns>URL text</returns>
+        </member>
+        <member name="P:Id3Lib.FrameUrl.TextCode">
+            <summary>
+            Type of text encoding the frame is using
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameUrl.Description">
+            <summary>
+            Description of the frame contents
+            </summary>
+        </member>
+        <member name="P:Id3Lib.FrameUrl.URL">
+            <summary>
+            The URL page location
+            </summary>
+        </member>
+        <member name="T:Id3Lib.ExtendedHeader">
+            <summary>
+            ID3 Extended Header manager
+            </summary>
+            <remarks>
+            The extended header contains information that can provide further
+            insight in the structure of the tag, but is not vital to the correct
+            parsing of the tag information; hence the extended header is optional.
+            </remarks>
+        </member>
+        <member name="M:Id3Lib.ExtendedHeader.Deserialize(System.IO.Stream)">
+            <summary>
+            Load the ID3 extended header from a stream
+            </summary>
+            <param name="stream">Binary stream containing a ID3 extended header</param>
+        </member>
+        <member name="M:Id3Lib.ExtendedHeader.Serialize(System.IO.Stream)">
+            <summary>
+            Save the ID3 extended header from a stream
+            </summary>
+            <param name="stream">Binary stream containing a ID3 extended header</param>
+        </member>
+        <member name="P:Id3Lib.ExtendedHeader.Header">
+            <summary>
+            Set a reference to the ID3 header
+            </summary>
+        </member>
+        <member name="P:Id3Lib.ExtendedHeader.Size">
+            <summary>
+            Get the size of the extended header
+            </summary>
+        </member>
+    </members>
+</doc>

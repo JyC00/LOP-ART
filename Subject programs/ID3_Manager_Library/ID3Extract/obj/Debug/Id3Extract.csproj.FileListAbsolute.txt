@@ -1,0 +1,9 @@
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\ID3Extract.exe
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\ID3Extract.pdb
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\Id3Lib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\SharpZipLib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\Id3Lib.pdb
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\bin\Debug\Id3Lib.xml
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\obj\Debug\ID3Extract.exe
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\ID3Extract\obj\Debug\ID3Extract.pdb

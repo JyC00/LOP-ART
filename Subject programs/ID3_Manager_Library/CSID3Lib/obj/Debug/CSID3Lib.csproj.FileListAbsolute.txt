@@ -1,0 +1,14 @@
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\bin\Debug\id3lib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\bin\Debug\id3lib.pdb
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\bin\Debug\ID3Lib.xml
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\bin\Debug\SharpZipLib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\obj\Debug\id3lib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib-0.1.src\CSID3Lib\obj\Debug\id3lib.pdb
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\bin\Debug\id3lib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\bin\Debug\id3lib.pdb
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\bin\Debug\ID3Lib.xml
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\bin\Debug\SharpZipLib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\obj\Debug\id3lib.dll
+C:\Documents and Settings\Administrator\Desktop\CSID3Lib\CSID3Lib\obj\Debug\id3lib.pdb

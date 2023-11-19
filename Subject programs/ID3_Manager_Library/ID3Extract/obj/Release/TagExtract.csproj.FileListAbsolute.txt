@@ -1,0 +1,9 @@
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\Repository.sdf
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\ID3Extract.exe.config
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\ID3Extract.exe
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\ID3Extract.pdb
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\Id3Lib.dll
+D:\Projects\CSID3Lib\ID3Extract\bin\Release\SharpZipLib.dll
+D:\Projects\CSID3Lib\ID3Extract\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\CSID3Lib\ID3Extract\obj\Release\ID3Extract.exe
+D:\Projects\CSID3Lib\ID3Extract\obj\Release\ID3Extract.pdb

@@ -1,0 +1,13 @@
+D:\Projects\CSID3Lib\CSID3Lib\bin\Debug\Id3Lib.dll
+D:\Projects\CSID3Lib\CSID3Lib\bin\Debug\Id3Lib.pdb
+D:\Projects\CSID3Lib\CSID3Lib\bin\Debug\ID3Lib.xml
+D:\Projects\CSID3Lib\CSID3Lib\bin\Debug\SharpZipLib.dll
+D:\Projects\CSID3Lib\CSID3Lib\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\CSID3Lib\CSID3Lib\obj\Debug\Id3Lib.dll
+D:\Projects\CSID3Lib\CSID3Lib\obj\Debug\Id3Lib.pdb
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\bin\Debug\Id3Lib.dll
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\bin\Debug\Id3Lib.pdb
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\bin\Debug\SharpZipLib.dll
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\obj\Debug\ResolveAssemblyReference.cache
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\obj\Debug\Id3Lib.dll
+G:\kael\tempWorkSpace\CSID3Lib\CSID3Lib\obj\Debug\Id3Lib.pdb

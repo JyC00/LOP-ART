@@ -1,0 +1,4 @@
+D:\Projects\CSID3Lib\CSID3Lib\bin\Release\Id3Lib.dll
+D:\Projects\CSID3Lib\CSID3Lib\bin\Release\SharpZipLib.dll
+D:\Projects\CSID3Lib\CSID3Lib\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\CSID3Lib\CSID3Lib\obj\Release\Id3Lib.dll

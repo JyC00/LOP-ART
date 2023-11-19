@@ -1,0 +1,9 @@
+D:\Projects\CSID3Lib\id3Editor\bin\Release\id3Editor.exe
+D:\Projects\CSID3Lib\id3Editor\bin\Release\Id3Lib.dll
+D:\Projects\CSID3Lib\id3Editor\bin\Release\SharpZipLib.dll
+D:\Projects\CSID3Lib\id3Editor\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\CSID3Lib\id3Editor\obj\Release\TagEditor.ID3Edit.resources
+D:\Projects\CSID3Lib\id3Editor\obj\Release\TagEditor.ID3PowerEdit.resources
+D:\Projects\CSID3Lib\id3Editor\obj\Release\TagEditor.MainForm.resources
+D:\Projects\CSID3Lib\id3Editor\obj\Release\TagEditor.csproj.GenerateResource.Cache
+D:\Projects\CSID3Lib\id3Editor\obj\Release\id3Editor.exe
